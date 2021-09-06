@@ -23,6 +23,7 @@ int getpid(void);
 char* sbrk(int);
 int sleep(int);
 int uptime(void);
+int getyear(void);
 int ps(void);
 int wait2(int *wtime, int *rtime);
 

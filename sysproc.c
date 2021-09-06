@@ -104,6 +104,13 @@ sys_uptime(void)
   return xticks;
 }
 
+// return the year of which the Unix version 6 was released
+int
+sys_getyear(void)
+{
+  return 1975;
+}
+
 int
 sys_ps(void)
 {
