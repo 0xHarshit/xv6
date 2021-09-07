@@ -532,3 +532,21 @@ procdump(void)
     cprintf("\n");
   }
 }
+
+int
+ps(void)
+{
+  const char* stateNames[] = {"UNUSED", "EMBRYO", "SLEEPING", "RUNNABLE", "RUNNING", "ZOMBIE" };
+
+  struct proc *p;
+
+  acquire(&ptable.lock);
+  cprintf("name\tpid\tparent\tstate\n");
+  for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
+    if (p->state != UNUSED) {
+      cprintf("%s\t%d\t%d\t%s\n", p->name, p->pid, p->parent->pid, stateNames[p->state]);
+    }
+  }
+  release(&ptable.lock);
+  return 0;
+}
